@@ -1,0 +1,210 @@
+.mainBox{
+  display: flex;
+  flex-direction: row;
+}
+.first-container {
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  height:800;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  
+}
+
+.signUp-form {
+  display: flexbox;
+  /* //flex-direction: column; */
+  align-items: center;
+  width: 81%;
+  
+  padding: 30px important;
+  height:90vh;;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+.MuiTextField-root {
+  width: 250px !important;
+ 
+}
+.date-picker {
+  width: 80%;
+  max-width: 236px;
+  padding: 10px;
+  font-size: 16px;
+  /* add any other styles you want */
+}
+
+
+/* .MuiFormGroup-root {
+ background-color: white !important;
+ padding: 16.5px 14px;
+ box-sizing: content-box;
+ border-color: black  !important;
+ height: 1.4375em;
+  
+} */
+
+form > * {
+  margin: 10px 0;
+  width: 100%;
+  padding-left: 20px;
+  max-width: 300px;
+}
+
+.signup{
+  color:#04AA6D;
+  font-Family:fantasy;
+  font-Stretch:expanded;
+  font-Size:35px;
+  font-Style:bold;
+  padding-left: 12px;
+}
+.submit{
+  align-items: center;
+  width: 188px;
+  position: relative;
+  left: 174px;
+  color: white;
+  top: 11px;
+  font-size: 26px;
+  background-color: #04AA6D;
+  border-radius: 25px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 18px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 600;
+  height: 50px;
+ 
+  border: none !important;
+ 
+  letter-spacing: normal;
+
+}
+
+.second-container{
+    background-color: #04AA6D;
+    display: grid;
+   flex-direction: column;
+    align-items: center;
+    width: 81%;
+    
+    padding: 30px important;
+    height:100vh;;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+  
+}
+.subdiv{
+  width: 77vh;
+  height: 83vh;
+  background-color: rgb(232, 239, 234);
+  left: 215px;
+  display: grid;
+  /* flex-wrap: wrap; */
+  /* display: 'block';
+    marginBottom: '10px'; */
+}
+
+.hadAccount{
+ 
+color: #04AA6D;
+font-Family: fantasy;
+font-Stretch: expanded;
+font-Size: 35px;
+/* position: fixed; */
+top: 103px;
+font-Style: bold;
+/* padding-top: 36px; */
+padding-left: 89px;
+}
+.semiTitle{
+ 
+  color: #aa0420;
+    font-Family: fantasy;
+    font-Stretch: expanded;
+    font-Size: 35px;
+    /* position: fixed; */
+    top: 103px;
+    font-Style: bold;
+    /* padding-top: 36px; */
+    padding-left: 27px;
+  }
+
+   .playStore{
+    /* position: absolute; */
+    top: 60%;
+    right: 25%;
+    width: 200px;
+    height: 65px;; 
+    padding-left: 176px;
+} 
+.appStore{
+  /* position: absolute; */
+  top: 30%;
+  right: 25%;
+  width: 200px;
+  height: 65px;
+  padding-left: 176px;
+}  
+ 
+@media (max-width: 768px) {
+  .mainBox {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first-container, .right-box {
+    width: 100%;
+  }
+  .signUp-form {
+    display: flexbox;
+    align-items: center;
+    width: 81%;
+    padding: 30px important;
+    height: 141vh;
+   
+    border-radius: 10px;
+  }
+  .semiTitle {
+    color: #aa0420;
+    font-Family: fantasy;
+    font-Stretch: expanded;
+    font-Size: 33px;
+    /* position: fixed; */
+    top: 103px;
+    font-Style: bold;
+    /* padding-top: 36px; */
+    padding-left: 0px;
+}
+.submit {
+  align-items: center;
+  width: 188px;
+  position: relative;
+  left: 15px;
+  color: white;
+  top: 11px;
+  font-size: 26px;
+  background-color: #04AA6D;
+  border-radius: 25px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 18px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 600;
+  height: 50px;
+  border: none !important;
+  letter-spacing: normal;
+}
+  .second-container {
+    order: 1;
+    margin-top: 20px;
+    width: 100%;
+  }}
