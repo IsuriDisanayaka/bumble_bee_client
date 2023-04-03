@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
@@ -13,7 +15,16 @@ import appStore from '../assets/img/appStore.png'
 import playStore from '../assets/img/playStore.png'
 import "../assets/css/SignUp.css"
 import axios from 'axios';
-import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Button, Toolbar } from '@mui/material';
+import CustomerDetails from './CustomerDetails';
+import { useHistory } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import logo from '../assets/img/logo.png'
+
+
+
+
 
 
 
@@ -36,9 +47,15 @@ function SignUp() {
   const [gender, setGender] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const history = useHistory();
+
+
  
+  
 
 
+    
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -72,26 +89,28 @@ function SignUp() {
    .then(response => {
      console.log('Successfully saved customer:', response.data);
      alert('Your account has been created.');
-     setFirstName('');
-     setLastName('');
-     setFullName('');
-     setAddress('');
-     setContact('');
-     setEmail('');
-     setNic('');
-     setBudget('');
-     setBirthOfDate('');
-     setGender('');
-     setPassword('');
-     setConfirmPassword('');
+    
+      clearText();
+      setIsRegistered(true);
+    //  history.push('/customerDetails');
+      history.push({
+        pathname: '/customerDetails',
+        state: { data: response.data }
+      });
+      
+      
+     // <Link to={"./"}>
+      
+  //  </Link>
     
    })
    .catch(error => {
      console.error('Error saving customer:', error);
      alert('An error occurred. Please try again later.');
+
    });
 };
- 
+
     const handleDateSelect = (value) => {
       setBirthOfDate(value);
     };
@@ -100,10 +119,28 @@ function SignUp() {
     const handleDateChange = (value) => {
       setBirthOfDate(value);
    };
-   
+   function clearText() {
+    setFirstName('');
+    setLastName('');
+    setFullName('');
+    setAddress('');
+    setContact('');
+    setEmail('');
+    setNic('');
+    setBudget('');
+    setBirthOfDate('');
+    setBirthOfDate('');
+    setGender('');
+    setPassword('');
+    setConfirmPassword('');
+  }
   
   return (
+    
     <Box className ='mainBox'>
+  
+
+  
     <Box className='first-container'  sx={{
       '& .MuiTextField-root': { m: 1, width: '25ch' },
     }} >
@@ -245,6 +282,20 @@ function SignUp() {
         />
        
         <button className='submit' type="submit">Sign up</button>
+       
+          {/* {isRegistered && (
+        <div>
+          <h1>Success!</h1>
+          <p>Your account has been created.</p>
+          <a href="/CustomerDetails" style={{ textDecoration: "none" }}>
+  <button>View your details</button>
+</a>
+        </div> */}
+      {/* )} */}
+     
+      
+       
+      
      
       </form>
     <div>
@@ -261,7 +312,9 @@ function SignUp() {
       <img className='playStore' src={playStore} alt='' />
     </div>
     </div>
+   
     </Box>
+  
   );
 }
 export default SignUp;
