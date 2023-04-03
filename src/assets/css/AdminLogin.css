@@ -1,0 +1,38 @@
+.maindiv{
+    background-color:#ffff;
+    width: 100vw;
+    height: 100vh;
+}
+
+.signin{
+    position: absolute; 
+    right: 500px;
+    color:rgb(26 17 62);
+    font-size: 65px;
+    font-family:Cambria;
+ }
+ .card{
+position: absolute;
+background-color: #b0bdbd7d;
+height: 272px;
+width: 582px;
+top: 178px;
+left: 715px;
+ }
+ .formlogin{
+    display: grid;
+    width: 400px;
+    position: absolute;
+    right: 132px;
+    top: 40px;
+    
+    
+}
+.button{
+    position: absolute;
+    top:200px;
+    width: 300px;
+    left:140px;
+    font-weight: bold;
+}
+

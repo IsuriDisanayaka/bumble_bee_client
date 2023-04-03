@@ -5,32 +5,69 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import logo from "./asserts/logo.png"
-import closeIcon from "./asserts/close.png"
+import logo from "../assets/img/logo.png"
+import closeIcon from "../assets/img/close.png"
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
 import "../assets/css/Navigation.css"
+import axios from 'axios';
 
 
 function Navigation() {
   const [showPopup,setShowPopup]=useState(false);
-  const [username,setUsername]=useState('');
+  const [email,setEmail]=useState('');
   const[password,setPassword]=useState('');
+  
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+    setEmail(event.target.value);
   }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   }
-  const handleLogin = () => {
-    // Perform login logic here
-    console.log(`Logged in with username: ${username} and password: ${password}`);
-    setShowPopup(false);
+ 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    axios.get(`http://localhost:8000/api/v1/admin/${email}/${password}`)
+  .then((response) => {
+    if (response.status === 200 && response.data.data === "true") {
+      console.log('Successfully logged in:', response.data);
+      alert('Success');
+    } else {
+      console.error('Login failed:', response);
+      alert('Login failed .Please try Again');
+    }
+  })
+  .catch((error) => {
+    console.error('Error logging in:', error);
+  });
+
   }
+  
   const handleClick = () => {
     setShowPopup(true);
   }
+
+  // const  handleLogin = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:8000/api/v1/admin', {
+  //       params: {
+  //         email: email,
+  //         password: password
+  //       }
+  //     });
+  //     if (response.status === 200) {
+  //       alert('success');
+  //       console.log("ok")
+  //     } else {
+  //       alert('error');
+  //       console.log("jok")
+  //     }
+  //   } catch (error) {
+  //     console.error('Error logging in:', error);
+      
+  //   }
+  // };
   
   return (
     <Box className='box'>
@@ -60,7 +97,7 @@ function Navigation() {
 </Button>
  </Link>
 
-          <Button onClick={handleClick}
+          <Button on onClick={handleClick}
            style={{marginRight: "50px" ,fontSize:"18px",fontFamily:"Cambria", color:"white",variant:"outlined", variant:"outlined",
               '&:hover': {
                 backgroundColor: 'white',
@@ -74,7 +111,7 @@ function Navigation() {
             <form >
             <Grid container direction={"column"} spacing={5}>
             <Grid item>
-            <TextField required label="Email" type={"email"} value={username} onChange={handleUsernameChange}></TextField>
+            <TextField required label="Email" type={"email"} value={email} onChange={handleUsernameChange}></TextField>
             </Grid>
 
             <Grid item>
