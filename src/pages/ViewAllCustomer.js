@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import PopupPage from "../components/PopupPage"
 
 import "../assets/css/WelcomePage.css";
 import jsPDF from 'jspdf';
@@ -32,13 +33,24 @@ const ViewAllCustomer = () => {
      const [searchResults, setSearchResults] = useState([]);
   const [highlightedRow, setHighlightedRow] = useState(null);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
 
+  const [selectedRowData, setSelectedRowData] = useState(null);
+
+  const handleRowClick = (rowData) => {
+    setSelectedRowData(rowData);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedRowData(null);
+  };
     const handleReset = () => {
       setShowSearchResults(false);
       setSearchResults([]);
     };
   
-  
+    
+    
     useEffect(() => {
       axios.get('http://localhost:8000/api/v1/user').then((response) => {
         setData(response.data.data);
@@ -169,10 +181,13 @@ const ViewAllCustomer = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      {selectedRowData && (
+        <PopupPage data={selectedRowData} onClose={handleClosePopup} />
+      )}
       </div>
       <button onClick={downloadPDF}>Download PDF</button>
 
-
+     
       </div>
       
   );

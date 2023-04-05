@@ -97,6 +97,13 @@ function ListItems() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  function logout() {
+    // your logout logic goes here
+    // e.g. clear the user session, remove the access token, etc.
+  
+    // after logout, redirect the user to the login page
+    window.location.href = '/'; // replace with your login page URL
+  }
   
 
 
@@ -188,7 +195,16 @@ function ListItems() {
               <ListItemText primary="Items" />
             </ListItem>
           </Link>
-          <Link  to="/logout" style={{ textDecoration: 'none', color: 'white' , backgroundColor: 'black'}}>
+          <Link to="/" onClick={logout} style={{ textDecoration: 'none', color: 'white', backgroundColor: 'black'}}>
+  <ListItem button style={{ backgroundColor: 'black', position: 'relative', top: '332px' }}>
+    <ListItemIcon>
+      <LogoutIcon style={{color:'white'}}/>
+    </ListItemIcon>
+    <ListItemText primary="Logout" />
+  </ListItem>
+</Link>
+
+          {/* <Link  to="/logout" style={{ textDecoration: 'none', color: 'white' , backgroundColor: 'black'}}>
             <ListItem button style={{ backgroundColor: 'black',position: 'relative',
     top: '332px',}}>
               <ListItemIcon>
@@ -196,7 +212,7 @@ function ListItems() {
               </ListItemIcon>
               <ListItemText primary="Logout" />
             </ListItem>
-          </Link>
+          </Link> */}
         </List>
         </Drawer>
         <div className={classes.content}>
@@ -206,7 +222,7 @@ function ListItems() {
             <Route path="/ViewAllItem" component={ItemsPage}/>
 
             
-            <Route path="/logout" component={WelcomePage} />
+            {/* <Route path="/logout" component={WelcomePage} /> */}
           </Switch>
         </div>
       </Router>
