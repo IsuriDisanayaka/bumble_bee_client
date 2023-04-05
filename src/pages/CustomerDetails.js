@@ -7,6 +7,11 @@ import "../assets/css/CustomerDetails.css";
 import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+import { Message } from 'primereact/message';
+        
+ 
+
+
 
 
 
@@ -27,8 +32,12 @@ function CustomerDetails() {
     
   
   
-   
-   
+    const content = (
+      <div style={{width:'300px'}}>
+    
+          <p >We send Your Verification code to your Email...Please Verify And log in using Mobile App! Happy Shopping</p>
+      </div>
+    )
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file && file.type.includes('image')) {
@@ -38,7 +47,11 @@ function CustomerDetails() {
               <img
                 src={reader.result}
                 alt="Selected"
-                style={{ borderRadius: '50%', width: '200px', height: '200px' }}
+                style={{ borderRadius: '50%', width: '200px', height: '200px' 
+                ,width: '56%', left:'17%',top:'59%',fontWeight:'800',height:'42px',justifyContent:'center',position:'fixed',
+   
+    backgroundColor: '#3d3d2b',
+                }}
               />
             );
           };
@@ -84,6 +97,7 @@ function CustomerDetails() {
           <TableCell style={{padding: '10px'}}>Budget</TableCell>
           <TableCell style={{padding: '10px'}}>Created Date</TableCell>
           <TableCell style={{padding: '10px'}}>Password</TableCell>
+          <TableCell style={{padding: '10px'}}>Email Verify</TableCell>
         </TableRow>
       </TableHead>
   <tbody>
@@ -143,9 +157,22 @@ function CustomerDetails() {
       <td >
       {data.data.password}
       </td>
+      <td>{data.data.enabled ? 'Verified' : 'Not verified yet'}</td>
     </tr>
   </tbody>
 </table>
+<Message
+style={{
+    border: 'solid #696cff',
+   position:'absolute',
+  bottom:'90pX',
+    color: '#696cff'
+}}
+className="border-primary w-full justify-content-start"
+severity="info"
+content={content}
+/>
+
 <div className='footer'>
       <Footer />
       </div>

@@ -1,0 +1,19 @@
+.savaItem {
+    align-items: center;
+    width: 188px;
+    position: relative;
+    left: 17px;
+    color: white;
+    top: 11px;
+    background-color: #04AA6D;
+    border-radius: 25px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 600;
+    height: 50px;
+    border: none !important;
+    letter-spacing: normal;
+}

@@ -152,7 +152,7 @@ function SignUp() {
         <TextField required label="First Name" 
         value={firstName}  onChange={(e) => {
     const input = e.target.value;
-    const regex = /^[a-zA-Z]+$/; 
+     const regex = /^[a-zA-Z]+$/; 
     if (regex.test(input) || input === '') {
       setFirstName(input);
       setFirstNameError(false);
@@ -188,7 +188,8 @@ function SignUp() {
         <TextField required label="Full Name"
          value={fullName}       onChange={(e) => {
     const input = e.target.value;
-    const regex = /^[a-zA-Z]+$/
+    const regex = /^[a-zA-Z\s]+$/
+
     if (regex.test(input) || input === '') {
       setFullName(input);
       setFullNameError(false);
@@ -217,7 +218,7 @@ function SignUp() {
         <TextField required label="Contact" type="tel" 
         value={contact} onChange={(e) => {
     const input = e.target.value;
-    const regex = /^[0-9 +]+$/; // regular expression for allowed characters
+    const regex = /^\d{10,10}$|^\d{1,10}$/; // regular expression for allowed characters
     if (input.length <= 11 && (regex.test(input) || input === '')) {
       setContact(input);
       setContactError(false);
