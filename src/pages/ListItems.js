@@ -98,11 +98,9 @@ function ListItems() {
     setOpen(!open);
   };
   function logout() {
-    // your logout logic goes here
-    // e.g. clear the user session, remove the access token, etc.
-  
-    // after logout, redirect the user to the login page
-    window.location.href = '/'; // replace with your login page URL
+   
+    
+    window.location.href = '/'; 
   }
   
 
