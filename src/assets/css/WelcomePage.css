@@ -1,0 +1,152 @@
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+      position: relative;
+   
+  }
+ 
+  .content {
+    
+    padding-top:100px;
+   
+    min-height: 100%;
+    position: relative;
+    
+  }
+ 
+
+.buy {
+    position: absolute;
+    top: 20%;
+    left: 24%;
+    transform: translate(-50%, -50%);
+     color:#b59e90;
+     font-Family:fantasy;
+     font-Stretch:expanded;
+     font-Size:100px;
+     font-Style:bold;
+      -webkit-text-stroke: 0.2vw #f5efef;
+}
+  .div{
+    flex: 1;
+  }
+.pay {
+    position: absolute;
+    top: 149%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    color: rgb(3, 3, 3);
+     font-Family:fantasy;
+     font-Stretch:expanded;
+     font-Size:90px;
+     font-Style:bold;
+     /* -webkit-text-stroke: 0.1vw #65bd7d; */
+} 
+.rev{
+    position: absolute;
+    top: 328%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+    color: rgb(88, 88, 86);
+     font-Family:Cambria;
+     font-Stretch:expanded;
+     font-Size:30px;
+     font-Style:bold;
+    
+}
+.logo{
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    top: 66%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+ 
+} 
+
+  .design {
+    position: fixed;
+    width: 394px;
+    height: 284px;
+    /* top: 408%; */
+    left: 0%;
+    bottom: 0;
+    /* transform: translate(-50%, -50%); */
+
+}
+
+.info{
+    position: absolute;
+    top: 9%;
+    right: 0%;
+    width: 700px;
+    height: 600px;
+    /* box-shadow: 1px 2px 7px 4px; */
+    
+}
+ .background{
+  position: fixed;
+  top: 9%;
+  right: 4%;
+  width: 508px;
+  height: 613px;
+  /* filter: blur(0.5px); */
+ }
+
+
+/* .appStore{
+    position: absolute;
+    top: 30%;
+
+    right: 25%;
+    width: 200px;
+    height: 100px;;
+}  */
+ /* .playStore{
+    position: absolute;
+    top: 60%;
+    right: 25%;
+    width: 200px;
+    height: 100px;; 
+} */ */
+.title{
+    position: relative;
+    top: 0%;
+   left:20%;
+   text-decoration: none;
+   justify-content: space-between;
+     color: white;
+     font-Family:Cambria;
+     font-Stretch:condensed;
+     font-Size:30px;
+     font-Style:bold; 
+}
+/* .semiTitle{
+    position: absolute;
+    top: 10%;
+   left: 9%;
+    
+     color: white;
+     font-Family:Cambria;
+    
+     font-Size:30px;
+    
+} */
+
+
+.footer{
+    
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  background-color: #0b0b0b;
+
+}
