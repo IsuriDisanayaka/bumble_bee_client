@@ -30,11 +30,14 @@ const ViewAllCustomer = () => {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('id');
     const [visible, setVisible] = useState(false);
-     const [searchResults, setSearchResults] = useState([]);
+    
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setResults] = useState([]);
   const [highlightedRow, setHighlightedRow] = useState(null);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [selectedRow, setSelectedRow] = useState(null);
 
+  
   const [selectedRowData, setSelectedRowData] = useState(null);
 
   const handleRowClick = (rowData) => {
@@ -44,11 +47,17 @@ const ViewAllCustomer = () => {
   const handleClosePopup = () => {
     setSelectedRowData(null);
   };
-    const handleReset = () => {
-      setShowSearchResults(false);
-      setSearchResults([]);
-    };
-  
+  const handleReset = () => {
+    axios.get('http://localhost:8000/api/v1/user?random=' + Math.random())
+      .then((response) => {
+        setData(response.data.data);
+        setShowSearchResults(false);
+        setSearchTerm('');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
     
     
     useEffect(() => {
@@ -62,6 +71,7 @@ const ViewAllCustomer = () => {
         .get(`http://localhost:8000/api/v1/user/${type}/${input}`)
         .then((response) => {
           setData(response.data.data);
+          setShowSearchResults(true); 
         })
         .catch((error) => {
           console.log(error);
@@ -101,12 +111,16 @@ const ViewAllCustomer = () => {
   <select id="search-type">
   <option value="id">Id</option>
     <option value="fullName">Full Name</option>
+    <option value="gender">Gender</option>
+    <option value="fullName">Full Name</option>
+    <option value="nic">NIC</option>
+    <option value="contact">Contact</option>
     <option value="address">Address</option>
   </select>
   <button onClick={() => handleSearch(document.getElementById('search-type').value, document.getElementById('search-input').value)}>Search</button>
-  {showSearchResults && (
-          <button onClick={handleReset}>Reset</button>
-        )}
+  {showSearchResults ? (
+  <button onClick={handleReset}>Reset</button>
+) : null}
 </div>
 </div>
 </div>

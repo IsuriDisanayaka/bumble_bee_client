@@ -166,7 +166,7 @@ function ListItems() {
       <Drawer style ={{height:'100vh'}}variant="permanent" open={open}>
         <List component="nav" className={classes.list}>
           {/* <Divider sx={{ my: 1 }} /> */}
-          <Link to="/" style={{ textDecoration: 'none', color: 'white' , backgroundColor: 'black',
+          <Link to="/dashboard" style={{ textDecoration: 'none', color: 'white' , backgroundColor: 'black',
     }}>
             <ListItem button style={{ backgroundColor: 'black'}}>
               <ListItemIcon>
@@ -213,9 +213,9 @@ function ListItems() {
           </Link> */}
         </List>
         </Drawer>
-        <div className={classes.content}>
+        <div className={classes.content} style={{overflow: 'hidden',height:'10'}}>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/dashboard" component={Home} />
             <Route path="/ViewAllCustomer" component={ViewAllCustomer}/>
             <Route path="/ViewAllItem" component={ItemsPage}/>
 
