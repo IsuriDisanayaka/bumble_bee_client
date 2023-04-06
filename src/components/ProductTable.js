@@ -3,7 +3,8 @@ import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 export default function ProductTable(props) {
 
 
@@ -12,12 +13,12 @@ export default function ProductTable(props) {
   const [selectedRow, setSelectedRow] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setResults] = useState([]);
   const [highlightedRow, setHighlightedRow] = useState(null);
   const [showSearchResults, setShowSearchResults] = useState(false);
 
   
-
+  
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/v1/product?random=' + Math.random())
@@ -30,11 +31,12 @@ export default function ProductTable(props) {
   const handleSearch = () => {
     const input = document.getElementById('search-input').value;
     const type = document.getElementById('search-type').value;
-    axios.get(`http://localhost:8000/api/v1/product/${type}/${input}`)
+    axios
+      .get(`http://localhost:8000/api/v1/product/${type}/${input}`)
       .then((response) => {
         setData(response.data.data);
         setShowSearchResults(true); // set the showSearchResults state variable to true
-        handleReset(); // reset the search results and showSearchResults state variables
+    
       })
       .catch((error) => {
         console.log(error);
@@ -44,12 +46,28 @@ export default function ProductTable(props) {
   
 
   const handleReset = () => {
-   
-    setSearchResults([]);
-    setShowSearchResults(false);
-
+    axios.get('http://localhost:8000/api/v1/product?random=' + Math.random())
+      .then((response) => {
+        setData(response.data.data);
+        setShowSearchResults(false);
+        setSearchTerm('');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
+  
+  function downloadPDF() {
+    const doc = new jsPDF();
+  
+    doc.autoTable({
+      head: [['ID',  'Item Name', 'Brand Name', 'Description', 'price', 'createdDate']],
+      body: data.map((row) => [row.id, row.name, row.brandName, row.description,  row.price, row.createdDate.substr(0, 10)]),
+    });
+  
+    doc.save('ProductTable.pdf');
+  }
+  
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -101,18 +119,19 @@ export default function ProductTable(props) {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <div>
-  <input type="text" id="search-input" />
+     <div>
+  <input type="text" id="search-input" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
   <select id="search-type">
     <option value="name">Name</option>
     <option value="brandName">Brand Name</option>
   </select>
-  <button onClick={() => handleSearch(document.getElementById('search-type').value, document.getElementById('search-input').value)}>Search</button>
+  <button onClick={handleSearch}>Search</button>
   {showSearchResults ? (
   <button onClick={handleReset}>Reset</button>
 ) : null}
 
 </div>
+
       <DataGrid 
         rows={data}
         columns={columns}
@@ -131,7 +150,10 @@ export default function ProductTable(props) {
           <button onClick={() => handleDelete(selectedRow.id)}>Delete</button>
         </Popup>
       )}
+      <button onClick={downloadPDF}>Download PDF</button>
     </div>
   );
+  
+  
   
 }

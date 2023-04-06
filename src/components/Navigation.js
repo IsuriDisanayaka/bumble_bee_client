@@ -36,7 +36,7 @@ function Navigation() {
   .then((response) => {
     if (response.status === 200 && response.data.data === "true") {
       console.log('Successfully logged in:', response.data);
-      alert('Success');
+      
       history.push('/dashboard');
     } else {
       console.error('Login failed:', response);
